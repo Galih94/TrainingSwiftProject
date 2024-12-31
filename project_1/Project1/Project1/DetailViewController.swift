@@ -15,6 +15,12 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImage()
+        setTitle(selectedImage)
+    }
+    
+    private func setTitle(_ text: String?) {
+        title = text
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     override func viewWillAppear(_ animated: Bool) {

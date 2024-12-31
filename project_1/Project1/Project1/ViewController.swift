@@ -13,7 +13,12 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImages()
-        print("pictures: ", pictures)
+        setTitle("Storm Viewer")
+    }
+    
+    private func setTitle(_ text: String) {
+        title = text
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     private func loadImages() {
