@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xXd-gd-w7k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xXd-gd-w7k">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,21 +49,24 @@
         <scene sceneID="E0z-XY-s7t">
             <objects>
                 <viewController storyboardIdentifier="Detail" id="FS3-ki-1jm" customClass="DetailViewController" customModule="Project1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2u9-qT-qlX"/>
+                        <viewControllerLayoutGuide type="bottom" id="4a8-xN-Zri"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ha4-go-UHE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q6b-wR-CN5">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q6b-wR-CN5">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="P8r-uQ-hcd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Q6b-wR-CN5" firstAttribute="top" secondItem="P8r-uQ-hcd" secondAttribute="top" id="D5v-CH-9dM"/>
-                            <constraint firstItem="P8r-uQ-hcd" firstAttribute="trailing" secondItem="Q6b-wR-CN5" secondAttribute="trailing" id="UZG-zi-RdH"/>
-                            <constraint firstItem="Q6b-wR-CN5" firstAttribute="leading" secondItem="P8r-uQ-hcd" secondAttribute="leading" id="YKB-eR-vuc"/>
-                            <constraint firstItem="P8r-uQ-hcd" firstAttribute="bottom" secondItem="Q6b-wR-CN5" secondAttribute="bottom" id="mzW-7a-Dn7"/>
+                            <constraint firstItem="Q6b-wR-CN5" firstAttribute="height" secondItem="ha4-go-UHE" secondAttribute="height" id="37X-9G-cjm"/>
+                            <constraint firstAttribute="trailing" secondItem="Q6b-wR-CN5" secondAttribute="trailing" id="UZG-zi-RdH"/>
+                            <constraint firstItem="Q6b-wR-CN5" firstAttribute="centerY" secondItem="ha4-go-UHE" secondAttribute="centerY" id="VED-Vv-9up"/>
+                            <constraint firstItem="Q6b-wR-CN5" firstAttribute="leading" secondItem="ha4-go-UHE" secondAttribute="leading" id="YKB-eR-vuc"/>
                         </constraints>
                     </view>
                     <connections>

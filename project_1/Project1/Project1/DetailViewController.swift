@@ -16,10 +16,23 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         loadImage()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        shouldHideBarOnTap(true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        shouldHideBarOnTap(false)
+    }
 
     private func loadImage() {
         guard let imageName = selectedImage else { return }
         imageView.image = UIImage(named: imageName)
     }
     
+    private func shouldHideBarOnTap(_ isHide: Bool) {
+        navigationController?.hidesBarsOnTap = isHide
+    }
 }
