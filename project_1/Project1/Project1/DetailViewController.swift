@@ -11,11 +11,12 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     public var selectedImage: String?
+    public var selectedTitle: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImage()
-        setTitle(selectedImage)
+        setTitle(selectedTitle)
     }
     
     private func setTitle(_ text: String?) {
