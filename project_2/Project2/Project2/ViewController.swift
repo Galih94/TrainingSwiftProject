@@ -48,5 +48,26 @@ class ViewController: UIViewController {
         
         title = countries[correctAnswerIndex].uppercased()
     }
+    
+    private func alertAction(_ action: UIAlertAction) {
+        askQuestions()
+    }
+    
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        var title: String = ""
+        if sender.tag == correctAnswerIndex {
+            title = "Correct"
+            score += 1
+        } else {
+            title = "Wrong"
+            score -= 1
+        }
+        let alert = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: alertAction))
+        self.present(alert, animated: true) { [weak self] in
+            self?.askQuestions()
+        }
+    }
+    
 }
 
