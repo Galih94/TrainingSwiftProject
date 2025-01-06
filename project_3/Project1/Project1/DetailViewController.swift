@@ -17,6 +17,24 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         loadImage()
         setTitle(selectedTitle)
+        setNavBarButton()
+    }
+    
+    private func setNavBarButton() {
+        let customButton = UIButton(type: .system)
+        customButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        customButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: customButton)
+    }
+    
+    @objc
+    private func shareTapped(_ sender: UIButton) {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else { return }
+        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        activityVC.popoverPresentationController?.sourceView = sender
+        activityVC.popoverPresentationController?.sourceRect = sender.bounds
+        activityVC.popoverPresentationController?.permittedArrowDirections = .any
+        self.present(activityVC, animated: true)
     }
     
     private func setTitle(_ text: String?) {
