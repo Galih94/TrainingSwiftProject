@@ -80,14 +80,17 @@ class ViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String = ""
+        var msg = ""
         if sender.tag == correctAnswerIndex {
             title = "Correct"
             score += 1
+            msg = "In Question Number \(numberQuestion), Your score is \(score)"
         } else {
             title = "Wrong"
             score -= 1
+            msg = "That's the falg of \(countries[sender.tag].uppercased()). In Question Number \(numberQuestion), Your score is \(score)"
         }
-        var msg = "In Question Number \(numberQuestion), Your score is \(score)"
+        
         if numberQuestion >= MAX_QUESTION {
             msg = "That is the final question, Your final score is \(score)"
             numberQuestion = 0
