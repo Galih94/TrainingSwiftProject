@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         }
     }
     var correctAnswerIndex = 0
+    var numberQuestion = 0
+    let MAX_QUESTION = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,7 @@ class ViewController: UIViewController {
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
         title = countries[correctAnswerIndex].uppercased()
+        numberQuestion += 1
     }
     
     private func alertAction(_ action: UIAlertAction) {
@@ -84,7 +87,13 @@ class ViewController: UIViewController {
             title = "Wrong"
             score -= 1
         }
-        let alert = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        var msg = "In Question Number \(numberQuestion), Your score is \(score)"
+        if numberQuestion >= MAX_QUESTION {
+            msg = "That is the final question, Your final score is \(score)"
+            numberQuestion = 0
+            score = 0
+        }
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: alertAction))
         self.present(alert, animated: true)
     }
