@@ -13,8 +13,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     
+    var scoreLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.sizeToFit()
+        return label
+    }()
+    
     var countries = [String]()
-    var score = 0
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     var correctAnswerIndex = 0
     
     override func viewDidLoad() {
@@ -22,6 +34,7 @@ class ViewController: UIViewController {
         loadCountries()
         askQuestions()
         setButtons()
+        setScore()
     }
     
     private func setButtons() {
@@ -36,6 +49,15 @@ class ViewController: UIViewController {
     
     private func loadCountries() {
         countries = ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+    }
+    
+    private func setScore() {
+        // Wrap the label in a UIBarButtonItem
+        let labelBarButtonItem = UIBarButtonItem(customView: scoreLabel)
+        
+        // Add both items to the right side
+        self.navigationItem.rightBarButtonItems = [labelBarButtonItem]
+        score = 0
     }
     
     private func askQuestions() {
@@ -64,9 +86,7 @@ class ViewController: UIViewController {
         }
         let alert = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: alertAction))
-        self.present(alert, animated: true) { [weak self] in
-            self?.askQuestions()
-        }
+        self.present(alert, animated: true)
     }
     
 }
