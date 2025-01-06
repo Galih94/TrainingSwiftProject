@@ -14,11 +14,29 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         loadImages()
         setTitle("Storm Viewer")
+        setNavBarButton()
     }
     
     private func setTitle(_ text: String) {
         title = text
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setNavBarButton() {
+        let customButton = UIButton(type: .system)
+        customButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        customButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: customButton)
+    }
+    
+    @objc
+    private func shareTapped(_ sender: UIButton) {
+        let message = "Check out this amazing app: https://apps.apple.com/app/id1234567890"
+        let activityVC = UIActivityViewController(activityItems: [message], applicationActivities: [])
+        activityVC.popoverPresentationController?.sourceView = sender
+        activityVC.popoverPresentationController?.sourceRect = sender.bounds
+        activityVC.popoverPresentationController?.permittedArrowDirections = .any
+        self.present(activityVC, animated: true)
     }
 
     private func loadImages() {
