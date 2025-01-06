@@ -29,8 +29,8 @@ class DetailViewController: UIViewController {
     
     @objc
     private func shareTapped(_ sender: UIButton) {
-        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else { return }
-        let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8), let selectedImage else { return }
+        let activityVC = UIActivityViewController(activityItems: [image, selectedImage], applicationActivities: [])
         activityVC.popoverPresentationController?.sourceView = sender
         activityVC.popoverPresentationController?.sourceRect = sender.bounds
         activityVC.popoverPresentationController?.permittedArrowDirections = .any
