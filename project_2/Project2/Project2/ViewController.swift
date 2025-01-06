@@ -13,18 +13,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     
-    var scoreLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
+    var scoreButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.black, for: .normal)
+        return button
     }()
     
     var countries = [String]()
     var score = 0 {
         didSet {
-            scoreLabel.text = "Score: \(score)"
-            scoreLabel.sizeToFit()
+            scoreButton.setTitle("Score: \(score)", for: .normal)
+            scoreButton.sizeToFit()
         }
     }
     var correctAnswerIndex = 0
@@ -55,11 +54,21 @@ class ViewController: UIViewController {
     
     private func setScore() {
         // Wrap the label in a UIBarButtonItem
-        let labelBarButtonItem = UIBarButtonItem(customView: scoreLabel)
+        scoreButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        let labelBarButtonItem = UIBarButtonItem(customView: scoreButton)
         
         // Add both items to the right side
         self.navigationItem.rightBarButtonItems = [labelBarButtonItem]
         score = 0
+    }
+    
+    @objc
+    private func shareTapped(_ sender: UIButton) {
+        var title: String = "Score"
+        var msg = "Your score is \(score)"
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: {_ in }))
+        self.present(alert, animated: true)
     }
     
     private func askQuestions() {
