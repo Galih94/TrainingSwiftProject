@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 16)
-        label.sizeToFit()
         return label
     }()
     
@@ -25,6 +24,7 @@ class ViewController: UIViewController {
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
+            scoreLabel.sizeToFit()
         }
     }
     var correctAnswerIndex = 0
